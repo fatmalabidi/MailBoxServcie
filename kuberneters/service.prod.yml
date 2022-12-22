@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailbox-svc
+  labels:
+    app: mailbox-svc
+    tier: backend
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 50060
+      protocol: TCP
+      targetPort: 50060
+  selector:
+    app: mailbox-svc
+    tier: backend

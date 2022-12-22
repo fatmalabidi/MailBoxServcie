@@ -1,0 +1,25 @@
+tag: dev
+
+server:
+  type: grpc                             # communication to be used for now only grpc is supported
+  host: localhost                        # grpc host
+  port: 50060                            # grpc server port
+  deadline: 10                       # 10 s
+
+database:                                # database config
+  messages:
+    type: dynamodb                       # must be dynamodb for the time being
+    tablename: mailboxsvc                # dynamo table name
+    pagination:                          # pagination configuration
+      pagesize: 25                       # number of elements page size
+      maxresultcount: 120                # maximum page count to be serviced from DB
+
+cognito:
+  userpoolid: eu-west-1_d8lLEVBFf        # user pool id
+  clientid: 36frpjdg25bffasdpqrr1auq96   # client id
+  region: eu-west-1                      # region hosts the user pool
+
+storage:
+  type: s3
+  bucket: 3almadmoon-configs
+  credentialspath: mailboxsvc/config.json

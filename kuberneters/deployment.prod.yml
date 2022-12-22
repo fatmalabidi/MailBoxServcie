@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailbox-svc
+spec:
+  selector:
+    matchLabels:
+      app: mailbox-svc
+      tier: backend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: mailbox-svc
+        tier: backend
+    spec:
+      containers:
+        - name: mailbox-svc
+          image: 966715539404.dkr.ecr.eu-west-1.amazonaws.com/3almadmoon/mailbox-svc:0.0.0
+          terminationMessagePolicy: FallbackToLogsOnError
+          env:
+            - name: AWS_DEFAULT_REGION
+              value: "eu-west-1"
+          ports:
+            - containerPort: 50060
+              protocol: TCP
+

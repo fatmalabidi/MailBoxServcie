@@ -1,0 +1,27 @@
+iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:GetItem
+      - dynamodb:PutItem
+      - dynamodb:Query
+    Resource: ${self:provider.environment.MAILBOX_TABLE_ARN}
+  - Effect: Allow
+    Action:
+      - dynamodb:GetItem
+      - dynamodb:Query
+    Resource: ${self:provider.environment.PROFILE_TABLE_ARN}
+
+  - Effect: Allow
+    Action:
+      - dynamodb:DescribeStream
+      - dynamodb:GetRecords
+      - dynamodb:GetShardIterator
+      - dynamodb:ListStreams
+    Resource: "arn:aws:dynamodb:${self:provider.region}:*:table/mailboxsvc-${self:provider.stage}/stream/*"
+
+
+  - Effect: Allow
+    Action:
+      - lambda:InvokeFunction
+      - logs:CreateLogGroup,
+    Resource: "*"

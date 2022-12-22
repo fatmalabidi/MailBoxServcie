@@ -1,0 +1,38 @@
+service: aalmadmoon-mailbox
+app: mailbox-dynamo-stream
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  runtime: go1.x
+  region: eu-west-1
+  stage: ${opt:stage, 'dev'}
+  logRetentionInDays: 30
+  stackTags:
+    Environment: ${self:custom.tags.Environment}
+    CostCenter: ${self:custom.tags.CostCenter}
+    Purpose: "Duplicate the new added message in dynamoDB in the mailbox of the receiver"
+    Owner: f.labidi@3almadmoon.com
+  iamRoleStatements: ${file(./resources/roles.yml):iamRoleStatements}
+  environment: ${file(./resources/env.${self:provider.stage}.yml):environment}
+
+package:
+  exclude:
+    - ./**
+  include:
+    - ./bin/**
+
+functions:
+  duplicator:
+    timeout: 60
+    name: "aalmadmoon-mailbox-duplicator-${opt:stage, self:provider.stage}"
+    description: "duplicates the new added message in dynamodb with outgoing filed to false"
+    handler: bin/duplicator
+    events:
+      - stream: ${self:provider.environment.STREAM_URI}
+
+custom:
+  tags:
+    Environment: ${self:provider.stage}
+    CostCenter: TUNIS

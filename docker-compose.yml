@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mailbox-svc:
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - GITHUB_USER
+        - GITHUB_TOKEN
+    env_file:
+      - deployment/compose.env
+    ports:
+      - 50060:50060

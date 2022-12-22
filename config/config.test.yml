@@ -1,0 +1,25 @@
+tag: test
+
+server:
+  type: grpc
+  host: localhost
+  port: 50060
+  deadline: 10 # 10s
+
+database:
+  messages:
+    type: dynamodb
+    tablename: mailboxsvc-test
+    pagination:
+      pagesize: 25
+      maxresultcount: 120
+
+cognito:
+  userpoolid: eu-west-1_d8lLEVBFf
+  clientid: 36frpjdg25bffasdpqrr1auq96
+  region: eu-west-1
+
+storage:
+  type: s3
+  bucket: 3almadmoon-configs
+  credentialspath: mailboxsvc/config-dev.json
