@@ -49,7 +49,7 @@ docker-build:
 	docker build \
 	--build-arg GITHUB_USER=${GITHUB_USER} \
 	--build-arg GITHUB_TOKEN=${GITHUB_TOKEN} \
-	-t 3almadmoon/mailboxsvc:${VERSION} .
+	-t fatmalabidi/mailboxsvc:${VERSION} .
 
 docker-run-dev:
 	docker run \
@@ -58,7 +58,7 @@ docker-run-dev:
 	-e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} \
 	-e CONFIGOR_ENV=development \
 	-p 50060:50060 \
-	3almadmoon/mailboxsvc:${VERSION}
+	fatmalabidi/mailboxsvc:${VERSION}
 
 docker-run-prod:
 	docker run \
@@ -66,16 +66,16 @@ docker-run-prod:
 	-e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} \
 	-e AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION} \
 	-p 50060:50060 \
-	3almadmoon/mailboxsvc:${VERSION}
+	fatmalabidi/mailboxsvc:${VERSION}
 
 ecr-login:
 	aws ecr get-login-password|docker login --username AWS --password-stdin ${ECR_REGISTRY}
 
 push-ecr:ecr-login
-	docker tag 3almadmoon/mailboxsvc:${VERSION} ${ECR_REGISTRY}/3almadmoon/mailboxsvc:${VERSION}
-	docker tag 3almadmoon/mailboxsvc:${VERSION} ${ECR_REGISTRY}/3almadmoon/mailboxsvc:latest
-	docker push ${ECR_REGISTRY}/3almadmoon/mailboxsvc:${VERSION}
-	docker push ${ECR_REGISTRY}/3almadmoon/mailboxsvc:latest
+	docker tag fatmalabidi/mailboxsvc:${VERSION} ${ECR_REGISTRY}/fatmalabidi/mailboxsvc:${VERSION}
+	docker tag fatmalabidi/mailboxsvc:${VERSION} ${ECR_REGISTRY}/fatmalabidi/mailboxsvc:latest
+	docker push ${ECR_REGISTRY}/fatmalabidi/mailboxsvc:${VERSION}
+	docker push ${ECR_REGISTRY}/fatmalabidi/mailboxsvc:latest
 
 clean:
 	$(GOCLEAN)

@@ -13,7 +13,7 @@ provider:
     Environment: ${self:custom.tags.Environment}
     CostCenter: ${self:custom.tags.CostCenter}
     Purpose: "Duplicate the new added message in dynamoDB in the mailbox of the receiver"
-    Owner: f.labidi@3almadmoon.com
+    Owner: f.labidi@fatmalabidi.com
   iamRoleStatements: ${file(./resources/roles.yml):iamRoleStatements}
   environment: ${file(./resources/env.${self:provider.stage}.yml):environment}
 

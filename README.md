@@ -1,5 +1,5 @@
 # MailboxService
-[![CircleCI](https://circleci.com/gh/3almadmoon/MailboxService.svg?style=svg&circle-token=242a76f632699b789c7bbb7712faa657e46cb0f3)](https://app.circleci.com/pipelines/github/3almadmoon/MailboxService)
+[![CircleCI](https://circleci.com/gh/fatmalabidi/MailboxService.svg?style=svg&circle-token=242a76f632699b789c7bbb7712faa657e46cb0f3)](https://app.circleci.com/pipelines/github/fatmalabidi/MailboxService)
 <a href='https://github.com/jpoles1/gopherbadger' target='_blank'>![gopherbadger-tag-do-not-edit](https://img.shields.io/badge/Go%20Coverage-88%25-brightgreen.svg?longCache=true&style=flat)</a>
 Mailbox service is responsible for all the in-app messaging and notifications 
 

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mailbox-svc-dev
-          image: 966715539404.dkr.ecr.eu-west-1.amazonaws.com/3almadmoon/mailbox-svc:0.0.0
+          image: 966715539404.dkr.ecr.eu-west-1.amazonaws.com/fatmalabidi/mailbox-svc:0.0.0
           terminationMessagePolicy: FallbackToLogsOnError
           env:
             - name: AWS_DEFAULT_REGION

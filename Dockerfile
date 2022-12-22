@@ -5,7 +5,7 @@ ARG GITHUB_USER
 ARG GITHUB_TOKEN
 
 # Add Maintainer Info
-LABEL maintainer="3almadmoon <info@3almadmoon.com>"
+LABEL maintainer="fatmalabidi <info@fatmalabidi.com>"
 
 # Set the Current Working Directory inside the container
 WORKDIR /app
